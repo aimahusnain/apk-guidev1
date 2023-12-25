@@ -9,7 +9,7 @@
       { "src": "/.*", "dest": "/index.ts" }
     ],
     "env": {
-      "DATABASE_URL": "@your-secret-database-url"
+      "DATABASE_URL": "mongodb+srv://aimahusnain:aimahusnain@blogcluster.4rxblmo.mongodb.net/tests"
     },
     "build": {
       "env": {
