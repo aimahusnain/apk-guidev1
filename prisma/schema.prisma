@@ -5,12 +5,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Post {
-  id          Int       @id @default(autoincrement())
+  id          Int       @id @map("_id")
   title       String
   description String
   image       String
