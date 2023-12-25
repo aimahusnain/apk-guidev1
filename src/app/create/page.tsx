@@ -154,7 +154,7 @@ export default function Create() {
 
                   <div className="-mx-4 flex flex-wrap">
                     {formControls.map((control) => (
-                      <div className="w-full px-4" key={control.id}>
+                      <div className="w-full px-4" key={control.label}>
                         <label className="mb-3 block text-sm font-medium text-dark dark:text-white">
                           {control.label}
                         </label>
@@ -192,9 +192,7 @@ export default function Create() {
                           />
                         ) : control.component === "select" ? (
                           <select
-                            onChange={(
-                              event: React.ChangeEvent<HTMLSelectElement>
-                            ) => {
+                            onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
                               setFormData({
                                 ...formData,
                                 [control.id]: event.target.value,
@@ -205,12 +203,12 @@ export default function Create() {
                             placeholder={control.placeholder}
                             className="w-full mb-8 rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                           >
-                            <option value={""} id="">
+                            <option value={""} key="default">
                               Select
                             </option>
-                            {control.options.map((optionItem) => (
+                            {control.options.map((optionItem, index) => (
                               <option
-                                id={optionItem.value}
+                                key={index} // Use a unique key, such as optionItem.value, if available
                                 value={optionItem.value}
                               >
                                 {optionItem.label}
