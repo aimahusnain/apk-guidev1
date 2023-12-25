@@ -1,16 +1,4 @@
-import BlogList from "@/components/blogs/blog-list";
 import CategoryList from "@/components/category";
-
-async function extractAllBlogs() {
-  const res = await fetch(`${process.env.URL}/api/blog-post/get-all-post`, {
-    method: "GET",
-    cache: "no-store",
-  });
-
-  const data = await res.json();
-
-  if (data.success) return data.data;
-}
 
 async function getAllListsByCategory(getId: string) {
   const res = await fetch(`${process.env.URL}/api/category?categoryID=${getId}`, {
@@ -25,7 +13,8 @@ async function getAllListsByCategory(getId: string) {
 
 export default async function Category({ params }: { params: any }) {
   const { id } = params;
+
   const getAllList = await getAllListsByCategory(id);
 
-  return <BlogList lists={getAllList} />;
+  return <CategoryList list={getAllList} />;
 }
