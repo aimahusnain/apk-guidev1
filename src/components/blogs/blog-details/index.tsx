@@ -133,25 +133,24 @@ export default function BlogDetailsHome({ blogData }: { blogData: Blog }) {
                 </h2>
               </div>
               {blogData && blogData.comments && blogData.comments.length > 0
-                ? blogData.comments.map((comment) => (
-                    <div className="p-6 text-base rounded-lg dark:bg-gray-900">
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="flex items-center">
-                          <p className="inline-flex items-center mr-3 text-sm text-black dark:text-white font-semibold">
-                            {comment.split("|")[1] === blogData?.userid
-                              ? `${
-                                  comment.split("|")[1].split("_")[0]
-                                } (Author)`
-                              : comment.split("|")[1].split("_")[0]}
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-gray-500 dark:text-gray-400">
-                        {comment.split("|")[0]}
-                      </p>
-                    </div>
-                  ))
-                : null}
+  ? blogData.comments.map((comment, index) => (
+      <div className="p-6 text-base rounded-lg dark:bg-gray-900" key={index}>
+        <div className="flex justify-between items-center mb-2">
+          <div className="flex items-center">
+            <p className="inline-flex items-center mr-3 text-sm text-black dark:text-white font-semibold">
+              {comment.split("|")[1] === blogData?.userid
+                ? `${comment.split("|")[1].split("_")[0]} (Author)`
+                : comment.split("|")[1].split("_")[0]}
+            </p>
+          </div>
+        </div>
+        <p className="text-gray-500 dark:text-gray-400">
+          {comment.split("|")[0]}
+        </p>
+      </div>
+    ))
+  : null}
+
             </section>
           </div>
         </div>
